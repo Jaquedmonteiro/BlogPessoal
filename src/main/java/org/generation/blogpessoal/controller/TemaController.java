@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController /*Detecta todas as requisiões do mapeamento feita via URL (navegador ou postman)*/
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/tema")
+@RequestMapping("/tema") /*Solicitação do mapeamento feito via URL*/
 public class TemaController {
 
 	@Autowired 
