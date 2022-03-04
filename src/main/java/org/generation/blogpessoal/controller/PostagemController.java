@@ -19,43 +19,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/postagens")
-@CrossOrigin("*")
+@RestController /*Informa ao Spring que esta Classe é um controlador, detectando todas as requisiões do mapeamento feita via URL (navegador ou postman)*/
+@RequestMapping("/postagens") /*Solicitação do mapeamento feito via URL*/
+@CrossOrigin("*")  /*Aceitará requisiões de qualquer origem*/
 public class PostagemController {
 	
-	@Autowired
-	private PostagemRepository repositoty;
+	@Autowired /*Injeção de dependências*/
+	private PostagemRepository repository;
 	
 	@GetMapping
 	public ResponseEntity<List<Postagem>> GetALL(){
-		return ResponseEntity.ok(repositoty.findAll());
+		return ResponseEntity.ok(repository.findAll());
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Postagem> GetById( @PathVariable long id){
-		return repositoty.findById(id)
+		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> Getbytitulo(@PathVariable String titulo){
-		return ResponseEntity.ok(repositoty.findAllByTituloContainingIgnoreCase(titulo));
+	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 	
 	@PostMapping
 	public ResponseEntity<Postagem> post (@Valid @RequestBody  Postagem postagem){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repositoty.save(postagem));
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
 	}
 	
 	@PutMapping
 	public ResponseEntity<Postagem> put ( @RequestBody  Postagem postagem){
-		return ResponseEntity.status(HttpStatus.OK).body(repositoty.save(postagem));
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
-		repositoty.deleteById(id);
+		repository.deleteById(id);
 	}
 }
