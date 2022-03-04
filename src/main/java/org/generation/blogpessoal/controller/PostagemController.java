@@ -20,21 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController /*Informa ao Spring que esta Classe é um controlador, detectando todas as requisiões do mapeamento feita via URL (navegador ou postman)*/
-<<<<<<< HEAD
 @RequestMapping("/postagens") /*Solicitação do mapeamento feito via URL*/
-@CrossOrigin("*")  /*Aceitará requisiões de qualquer origem*/
-public class PostagemController {
-	
-	@Autowired /*Injeção de dependências*/
-	private PostagemRepository repository;
-=======
-@RequestMapping("/postagens")  /*Solicitação do mapeamento feito via URL*/
 @CrossOrigin("*") /*Aceitará requisiões de qualquer origem*/
 public class PostagemController {
 	
-	@Autowired /*Injeção de dependências*/
-	private PostagemRepository repositoty;
->>>>>>> 3b06d4dcfb79312ea6e938c3c99bd86cadbdf313
+	@Autowired
+	private PostagemRepository repository;
 	
 	@GetMapping
 	public ResponseEntity<List<Postagem>> GetALL(){
@@ -49,7 +40,7 @@ public class PostagemController {
 	}
 	
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
+	public ResponseEntity<List<Postagem>> Getbytitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 	
