@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController /*Informa ao Spring que esta Classe é um controlador, detectando todas as requisiões do mapeamento feita via URL (navegador ou postman)*/
-@CrossOrigin(origins = "*", allowedHeaders = "*") /*Aceitará requisiões de qualquer origem*/
-@RequestMapping("/tema") /*Solicitação do mapeamento feito via URL*/
+@RestController 
+@CrossOrigin(origins = "*", allowedHeaders = "*") 
+@RequestMapping("/tema") 
 public class TemaController {
 
-	@Autowired /*Injeção de dependências*/
+	@Autowired 
 	private TemaRepository repository;
 	
 	@GetMapping
