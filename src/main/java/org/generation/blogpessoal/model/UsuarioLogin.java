@@ -1,13 +1,13 @@
 package org.generation.blogpessoal.model;
 
-public class UserLogin {
+public class UsuarioLogin {
 
 	private String nome;
-
+	
 	private String usuario;
-
+	
 	private String senha;
-
+	
 	private String token;
 
 	public String getNome() {
@@ -41,5 +41,4 @@ public class UserLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-
 }
