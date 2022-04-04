@@ -43,12 +43,12 @@ public class Postagem {
 
 	/*Insira os Getters and Setters*/
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitulo() {
